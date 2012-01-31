@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+     <Type>
+        <Name>System.IO.FileInfo</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Git</Name>
+                <GetScriptBlock>
+                $retVal = ""
+                if ($GitStatus.Index.Added -contains $this.Name) {  $retVal += "+" } `
+                elseif ($GitStatus.Index.Modified -contains $this.Name) { $retVal += "~" } `
+                elseif ($GitStatus.Index.Deleted -contains $this.Name) { $retVal += "-" } `
+                elseif ($GitStatus.Index.Unmerged -contains $this.Name) { $retVal += "!" } `
+                else { $retVal +=  " " }
+                
+                if ($GitStatus.Working.Added -contains $this.Name) { $retVal += "+" } `
+                elseif ($GitStatus.Working.Modified -contains $this.Name) { $retVal += "~" } `
+                elseif ($GitStatus.Working.Deleted -contains $this.Name) { $retVal += "-" } `
+                elseif ($GitStatus.Working.Unmerged -contains $this.Name) { $retVal += "!" } `
+                else { $retVal += " " }
+
+                $retVal 
+                </GetScriptBlock>
+            </ScriptProperty>
+          </Members>
+     </Type>
+     <Type>
+        <Name>System.IO.DirectoryInfo</Name>
+        <Members>
+           <ScriptProperty>
+                <Name>Git</Name>
+                <GetScriptBlock>
+                ""
+                </GetScriptBlock>
+            </ScriptProperty>
+          </Members>
+     </Type>
+</Types>
