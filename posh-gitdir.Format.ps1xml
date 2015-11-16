@@ -10,7 +10,7 @@
                 <TableHeaders>
                    <TableColumnHeader>
                       <Label>Mode</Label>
-                      <Width>5</Width>
+                      <Width>6</Width>
                       <Alignment>left</Alignment>
                    </TableColumnHeader>
                    <TableColumnHeader>
@@ -18,17 +18,17 @@
                       <Width>4</Width>
                       <Alignment>left</Alignment>
                    </TableColumnHeader>
-                    <TableColumnHeader>
-                        <Label>LastWriteTime</Label>
-                        <Width>20</Width>
-                        <Alignment>right</Alignment>
-                    </TableColumnHeader>
+                    <TableColumnHeader/>
                     <TableColumnHeader>
                         <Label>Length</Label>
                         <Width>10</Width>
                         <Alignment>right</Alignment>
                     </TableColumnHeader>
-                    <TableColumnHeader/>
+                    <TableColumnHeader>
+                        <Label>LastWriteTime</Label>
+                        <Width>20</Width>
+                        <Alignment>right</Alignment>
+                    </TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
@@ -41,15 +41,15 @@
                               <PropertyName>Git</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <ScriptBlock>
-                                    [String]::Format("{0,10}  {1,8}", $_.LastWriteTime.ToString("d"), $_.LastWriteTime.ToString("t"))
-                                </ScriptBlock>
+                                <PropertyName>Name</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
                               <PropertyName>Length</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
-                                <PropertyName>Name</PropertyName>
+                                <ScriptBlock>
+                                    [String]::Format("{0,10}  {1,8}", $_.LastWriteTime.ToString("d"), $_.LastWriteTime.ToString("t"))
+                                </ScriptBlock>
                             </TableColumnItem>
                         </TableColumnItems>
                     </TableRowEntry>
